@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { Api } from "../src/services/api.service";
 let token;
-test.describe.only("Challenge", () => {
+test.describe("Challenge", () => {
     test.beforeAll(async ({ request }, testinfo) => {
         const api = new Api(request);
         let r = await api.challenger.post( testinfo );
