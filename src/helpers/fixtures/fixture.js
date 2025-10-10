@@ -1,5 +1,6 @@
 import { test as base } from '@playwright/test';
 import { App } from '../../pagesFacade/app.page';
+import { Api } from "../../services/api.service";
 import { UserBuilder } from '../builders';
 
 export const test = base.extend ({
@@ -7,6 +8,10 @@ export const test = base.extend ({
         let application = new App(page);
         await application.main.open();
         await use(application);
+    },
+    api: async ({ request }, use) => {
+        let api = new Api(request);
+        await use(api);
     },
     registerUser: async ({ page }, use) => {
         let app = new App(page);

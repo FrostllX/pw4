@@ -1,17 +1,15 @@
-import { test, expect } from "@playwright/test";
-import { Api } from "../src/services/api.service";
+import { expect } from "@playwright/test";
+import { test } from "../src/helpers/fixtures/index"
+
 let token;
 test.describe("Challenge", () => {
-    test.beforeAll(async ({ request }, testinfo) => {
-        const api = new Api(request);
+    test.beforeAll(async ({ api }, testinfo) => {
         let r = await api.challenger.post( testinfo );
         const headers = r.headers();
         console.log(`${testinfo.project.use.apiURL}${headers.location}`);
         token = headers["x-challenger"];
-        console.log(token);
     });
-    test("Получить токен", async ({ request }, testinfo) => {
-        const api = new Api(request);
+    test("Получить токен", async ({ api }, testinfo) => {
         let body  = await api.challenges.get(token, testinfo);
         expect(body.challenges.length).toBe(59);
     });
