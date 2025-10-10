@@ -2,11 +2,11 @@ pipeline {
    agent any
    stages {
       stage('e2e-tests') {
-        nodejs('NodeJS2290) {
          steps {
+            nodejs('NodeJS2290') {
             sh 'npm i'
             sh 'npx playwright install --with-deps'
-            sh 'npx playwright test'
+            sh 'npx t'
          }
         }
       }
