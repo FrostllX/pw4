@@ -1,0 +1,18 @@
+# Ignore node modules
+node_modules/
+.allure/
+allure-report/
+# Ingore specific configuration files
+*.config.js
+
+# Ignore enviroment variables files
+.env
+.env.*
+
+# Ignore lock files
+yarn.lock
+package-lock.json
+
+# Ignore specific file types
+*.png
+*.gif
